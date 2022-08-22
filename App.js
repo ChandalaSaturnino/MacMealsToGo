@@ -28,7 +28,7 @@ const TAB_ICON = {
 function SettingsScreen() {
   return (
     <SafeArea>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View>
         <Text>Settings!</Text>
       </View>
     </SafeArea>
@@ -38,14 +38,14 @@ function SettingsScreen() {
 function MapsScreen() {
   return (
     <SafeArea>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View>
         <Text>Maps!</Text>
       </View>
     </SafeArea>
   );
 }
 
-const createScreenOptions = ({ focused, route }) => {
+const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
     tabBarIcon: ({ focused, size, color }) => (
@@ -76,7 +76,6 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            style={{ marginBottom: 20 }}
             screenOptions={createScreenOptions}
             tabBarOptions={{
               activeTintColor: "tomato",
