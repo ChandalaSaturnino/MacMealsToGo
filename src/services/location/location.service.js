@@ -1,7 +1,21 @@
 import camelize from "camelize";
 
-export const locationRequest = () => {};
+import { locations } from "./location.mock";
 
-export const locationTransform = () => {};
+export const locationRequest = (searchTerm) => {
+  return newPromise((resolve, reject) => {
+    const locationMock = locations[searchTerm];
+    if (!locationMock) {
+      reject("not found");
+    }
+    resolve(locationMock);
+  });
+};
 
-// this is the only change I've made here on the MAC.
+export const locationTransform = (result) => {
+  const formattedResponse = camelize(result);
+  const { geometry = {} } = formattedResponse.results[0];
+  const { lat, lng } = geometry.location;
+
+  return { lat, lng };
+};
