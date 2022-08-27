@@ -3,10 +3,10 @@ import camelize from "camelize";
 import { locations } from "./location.mock";
 
 export const locationRequest = (searchTerm) => {
-  return newPromise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm];
     if (!locationMock) {
-      reject("not found");
+      reject("Not found");
     }
     resolve(locationMock);
   });
@@ -19,3 +19,5 @@ export const locationTransform = (result) => {
 
   return { lat, lng };
 };
+
+// this is the only change I've made here on the MAC.
